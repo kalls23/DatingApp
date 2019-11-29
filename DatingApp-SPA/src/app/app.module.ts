@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -35,7 +36,8 @@ import { ErrorInterceptor, ErrorInterceptorProvider } from './_services/error.in
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      BsDropdownModule.forRoot()
    ],
    providers: [
       AuthService,
