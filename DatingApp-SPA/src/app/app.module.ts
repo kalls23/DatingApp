@@ -15,6 +15,7 @@ import { MemberListComponent } from 'src/member-list/member-list.component';
 import { ListsComponent } from 'src/lists/lists.component';
 import { MessagesComponent } from 'src/messages/messages.component';
 import { appRoutes } from './routes';
+import { ErrorInterceptor, ErrorInterceptorProvider } from './_services/error.interceptor';
 
 
 
@@ -37,7 +38,8 @@ import { appRoutes } from './routes';
       RouterModule.forRoot(appRoutes)
    ],
    providers: [
-      AuthService
+      AuthService,
+      ErrorInterceptorProvider
    ],
    bootstrap: [
       AppComponent
