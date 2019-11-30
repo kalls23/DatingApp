@@ -15,11 +15,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using DatingApp.API.helpers;
+using AutoMapper;
 
 namespace DatingApp.API
 {
@@ -39,13 +39,20 @@ namespace DatingApp.API
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(
+                Opt => {
+                    Opt.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                }
+            );
            // MvcOptions options = new MvcOptions();
             //options.EnableEndpointRouting = false;
 
             services.AddCors();
+            services.AddAutoMapper(typeof(DatingRepository).Assembly);
 
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
