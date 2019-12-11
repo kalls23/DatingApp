@@ -8,6 +8,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
+
+
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -30,6 +33,7 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 
 
@@ -58,7 +62,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -67,6 +72,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       RouterModule.forRoot(appRoutes),
       BsDropdownModule.forRoot(),
       NgxGalleryModule,
+      FileUploadModule,
       TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
