@@ -1,12 +1,14 @@
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -67,10 +69,13 @@ export class CustomHammerConfig extends HammerGestureConfig {
    ],
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
       BsDropdownModule.forRoot(),
+      BsDatepickerModule.forRoot(),
       NgxGalleryModule,
       FileUploadModule,
       TabsModule.forRoot(),
