@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DatingApp.API.Data;
 using DatingApp.API.DTOS;
+using DatingApp.API.helpers;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using AutoMapper;
 
 namespace DatingApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[Controller]")]
     [ApiController]
