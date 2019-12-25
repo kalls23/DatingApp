@@ -37,7 +37,11 @@ namespace DatingApp.API
         {
             //services.AddDbContext<DataContext>( x => x.UseSQ
 
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => {
+             options.UseLazyLoadingProxies();
+             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+             });
+
 
             services.AddControllers().AddNewtonsoftJson(
                 Opt => {
@@ -107,9 +111,13 @@ namespace DatingApp.API
 
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
 
            
